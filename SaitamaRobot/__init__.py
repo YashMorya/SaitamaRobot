@@ -4,6 +4,7 @@ import sys
 import time
 import spamwatch
 from pyrogram import Client, errors
+from redis import StrictRedis
 import telegram.ext as tg
 from telethon import TelegramClient
 
@@ -71,6 +72,7 @@ if ENV:
     CERT_PATH = os.environ.get("CERT_PATH")
     API_ID = os.environ.get('API_ID', None)
     API_HASH = os.environ.get('API_HASH', None)
+    REDIS_URL = os.environ.get('REDIS_URL')
     DB_URI = os.environ.get('DATABASE_URL')
     DONATION_LINK = os.environ.get('DONATION_LINK')
     LOAD = os.environ.get("LOAD", "").split()
@@ -137,6 +139,7 @@ else:
     WEBHOOK = Config.WEBHOOK
     URL = Config.URL
     PORT = Config.PORT
+    REDIS_URL = os.environ.get('REDIS_URL')
     CERT_PATH = Config.CERT_PATH
     API_ID = Config.API_ID
     API_HASH = Config.API_HASH
@@ -167,6 +170,24 @@ else:
 
 DRAGONS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
+
+REDIS = StrictRedis.from_url(REDIS_URL,decode_responses=True)
+
+try:
+
+    REDIS.ping()
+
+    LOGGER.info("Your redis server is now alive!")
+
+except BaseException:
+
+    raise Exception("Your redis server is not alive, please check again.")
+
+finally:
+
+   REDIS.ping()
+
+   LOGGER.info("Your redis server is now alive!")
 
 if not SPAMWATCH_API:
     sw = None
