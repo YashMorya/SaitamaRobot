@@ -1,12 +1,12 @@
 {
-      "name": "SaitamaRobot",
+      "name": "Light_Yagami",
       "description": "An Anime themed Telegram group management bot.",
       "keywords": [
          "telegram",
          "anime",
          "group",
          "manager",
-         "Saitama"
+         "Light"
       ],   
    "repository": "https://github.com/AnimeKaizoku/SaitamaRobot",
    "addons": [
