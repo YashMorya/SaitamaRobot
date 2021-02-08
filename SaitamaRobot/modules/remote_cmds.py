@@ -11,9 +11,9 @@ RBAN_ERRORS = {
     "User is an administrator of the chat", "Chat not found",
     "Not enough rights to restrict/unrestrict chat member",
     "User_not_participant", "Peer_id_invalid", "Group chat was deactivated",
-    "Need to be inviter of a user to punch it from a basic group",
+    "Need to be inviter of a user to remove it from a basic group By Writing It's Name On Death Note",
     "Chat_admin_required",
-    "Only the creator of a basic group can punch group administrators",
+    "Only the creator of a basic group can Remove group administrators",
     "Channel_private", "Not in the chat"
 }
 
@@ -21,19 +21,19 @@ RUNBAN_ERRORS = {
     "User is an administrator of the chat", "Chat not found",
     "Not enough rights to restrict/unrestrict chat member",
     "User_not_participant", "Peer_id_invalid", "Group chat was deactivated",
-    "Need to be inviter of a user to punch it from a basic group",
+    "Need to be inviter of a user to Remove it from a basic group",
     "Chat_admin_required",
-    "Only the creator of a basic group can punch group administrators",
+    "Only the creator of a basic group can Remove group administrators",
     "Channel_private", "Not in the chat"
 }
 
-RKICK_ERRORS = {
+RKILL_ERRORS = {
     "User is an administrator of the chat", "Chat not found",
     "Not enough rights to restrict/unrestrict chat member",
     "User_not_participant", "Peer_id_invalid", "Group chat was deactivated",
-    "Need to be inviter of a user to punch it from a basic group",
+    "Need to be inviter of a user to remove it from a basic group",
     "Chat_admin_required",
-    "Only the creator of a basic group can punch group administrators",
+    "Only the creator of a basic group can Remove group administrators",
     "Channel_private", "Not in the chat"
 }
 
@@ -41,9 +41,9 @@ RMUTE_ERRORS = {
     "User is an administrator of the chat", "Chat not found",
     "Not enough rights to restrict/unrestrict chat member",
     "User_not_participant", "Peer_id_invalid", "Group chat was deactivated",
-    "Need to be inviter of a user to punch it from a basic group",
+    "Need to be inviter of a user to Remove it from a basic group",
     "Chat_admin_required",
-    "Only the creator of a basic group can punch group administrators",
+    "Only the creator of a basic group can Remove group administrators",
     "Channel_private", "Not in the chat"
 }
 
@@ -51,9 +51,9 @@ RUNMUTE_ERRORS = {
     "User is an administrator of the chat", "Chat not found",
     "Not enough rights to restrict/unrestrict chat member",
     "User_not_participant", "Peer_id_invalid", "Group chat was deactivated",
-    "Need to be inviter of a user to punch it from a basic group",
+    "Need to be inviter of a user to remove it from a basic group",
     "Chat_admin_required",
-    "Only the creator of a basic group can punch group administrators",
+    "Only the creator of a basic group can remove group administrators",
     "Channel_private", "Not in the chat"
 }
 
@@ -198,7 +198,7 @@ def runban(update: Update, context: CallbackContext):
 
     try:
         chat.unban_member(user_id)
-        message.reply_text("Yep, this user can join that chat!")
+        message.reply_text("Yep, I Erased It Name From Death Note!")
     except BadRequest as excp:
         if excp.message == "Reply message not found":
             # Do not reply
@@ -215,7 +215,7 @@ def runban(update: Update, context: CallbackContext):
 
 @run_async
 @bot_admin
-def rkick(update: Update, context: CallbackContext):
+def rkill(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     message = update.effective_message
 
@@ -252,7 +252,7 @@ def rkick(update: Update, context: CallbackContext):
     if not is_bot_admin(chat, bot.id) or not chat.get_member(
             bot.id).can_restrict_members:
         message.reply_text(
-            "I can't restrict people there! Make sure I'm admin and can punch users."
+            "I am not an admin I can't write it's name on Death Note because i don't have my pen :(."
         )
         return
 
@@ -275,18 +275,18 @@ def rkick(update: Update, context: CallbackContext):
 
     try:
         chat.unban_member(user_id)
-        message.reply_text("Punched from chat!")
+        message.reply_text("Name Writed On Death Note!")
     except BadRequest as excp:
         if excp.message == "Reply message not found":
             # Do not reply
-            message.reply_text('Punched!', quote=False)
+            message.reply_text('Name Writed On Death Note', quote=False)
         elif excp.message in RKICK_ERRORS:
             message.reply_text(excp.message)
         else:
             LOGGER.warning(update)
-            LOGGER.exception("ERROR punching user %s in chat %s (%s) due to %s",
+            LOGGER.exception("ERROR My Death Note Is Lost Because %s in chat %s (%s) due to %s",
                              user_id, chat.title, chat.id, excp.message)
-            message.reply_text("Well damn, I can't punch that user.")
+            message.reply_text("Well damn, I can't Write Its Name On Death Note.")
 
 
 @run_async
@@ -458,8 +458,8 @@ def runmute(update: Update, context: CallbackContext):
 RBAN_HANDLER = CommandHandler("rban", rban, filters=CustomFilters.sudo_filter)
 RUNBAN_HANDLER = CommandHandler(
     "runban", runban, filters=CustomFilters.sudo_filter)
-RKICK_HANDLER = CommandHandler(
-    "rpunch", rkick, filters=CustomFilters.sudo_filter)
+RKILL_HANDLER = CommandHandler(
+    "rkill", rkick, filters=CustomFilters.sudo_filter)
 RMUTE_HANDLER = CommandHandler(
     "rmute", rmute, filters=CustomFilters.sudo_filter)
 RUNMUTE_HANDLER = CommandHandler(
@@ -467,6 +467,6 @@ RUNMUTE_HANDLER = CommandHandler(
 
 dispatcher.add_handler(RBAN_HANDLER)
 dispatcher.add_handler(RUNBAN_HANDLER)
-dispatcher.add_handler(RKICK_HANDLER)
+dispatcher.add_handler(RKILL_HANDLER)
 dispatcher.add_handler(RMUTE_HANDLER)
 dispatcher.add_handler(RUNMUTE_HANDLER)
