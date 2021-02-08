@@ -23,7 +23,6 @@ telethon==1.16.4
 spamwatch
 alphabet_detector
 cachetools
-tgCrypto>=1.2.2
 fontTools
 gtts
 tswift
