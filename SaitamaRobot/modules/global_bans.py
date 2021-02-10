@@ -20,7 +20,7 @@ from SaitamaRobot.modules.helper_funcs.chat_status import (is_user_admin,
 from SaitamaRobot.modules.helper_funcs.extraction import (extract_user,
                                                           extract_user_and_text)
 from SaitamaRobot.modules.helper_funcs.misc import send_to_list
-
+Light_Pic = "https://telegra.ph/file/2e82dc07d1a0d2b0f1c11.mp4"
 GBAN_ENFORCE_GROUP = 6
 
 GBAN_ERRORS = {
@@ -71,7 +71,7 @@ def gban(update: Update, context: CallbackContext):
 
     if int(user_id) in DEV_USERS:
         message.reply_text(
-            "That user is part of the Association\nI can't act against our own."
+            "Sorry But I Can't Write Shinigamis Names On Death Note"
         )
         return
 
@@ -95,10 +95,10 @@ def gban(update: Update, context: CallbackContext):
         return
 
     if user_id == bot.id:
-        message.reply_text("You uhh...want me to punch myself?")
+        message.reply_text("Don't Mess With Me It's Not Good For You To Scold Kira")
         return
 
-    if user_id in [777000, 1087968824]:
+    if user_id in [777000, 1087968824, 1270288285]:
         message.reply_text("Fool! You can't attack Telegram's native tech!")
         return
 
@@ -141,7 +141,7 @@ def gban(update: Update, context: CallbackContext):
         return
 
     message.reply_text("On it!")
-
+    message.reply_video(Light_Pic)
     start_time = time.time()
     datetime_fmt = "%Y-%m-%dT%H:%M"
     current_time = datetime.utcnow().strftime(datetime_fmt)
