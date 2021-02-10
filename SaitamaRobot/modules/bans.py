@@ -186,7 +186,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
         bot.send_video(chat.id, Light_Pic)
         bot.sendMessage(
             chat.id,
-            f"Writed {mention_html(member.user.id, html.escape(member.user.first_name))}'s Name On Death Note! "
+            f"Wrote {mention_html(member.user.id, html.escape(member.user.first_name))}'s Name On Death Note! "
             f"will be banned for {time_val}.",
             parse_mode=ParseMode.HTML)
         return log
@@ -247,7 +247,7 @@ def kill(update: Update, context: CallbackContext) -> str:
         bot.send_video(chat.id, Light_Pic)  
         bot.sendMessage(
             chat.id,
-            f"Writed {mention_html(member.user.id, html.escape(member.user.first_name))}'s Name On My Death Note!",
+            f"Wrote {mention_html(member.user.id, html.escape(member.user.first_name))}'s Name On My Death Note!",
             parse_mode=ParseMode.HTML)
         log = (
             f"<b>{html.escape(chat.title)}:</b>\n"
@@ -282,7 +282,7 @@ def killme(update: Update, context: CallbackContext):
         user_id)  # unban on current user = kick
     if res:
         update.effective_message.reply_video(Light_Pic)
-        update.effective_message.reply_text("*Writed Your Name On The Death Note*")
+        update.effective_message.reply_text("*Wrote Your Name On The Death Note*")
     else:
         update.effective_message.reply_text("Huh? My Pen Is Lost")
 
