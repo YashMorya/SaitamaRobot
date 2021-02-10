@@ -94,7 +94,7 @@ def ban(update: Update, context: CallbackContext) -> str:
 
     try:
         chat.kick_member(user_id)
-         bot.send_video(chat.id, Light_Pic)
+        bot.send_video(chat.id, Light_Pic)
         reply = (
             f"<code>❕</code><b>Ban Event</b>\n"
             f"<code> </code><b>•  User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
@@ -183,7 +183,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
 
     try:
         chat.kick_member(user_id, until_date=bantime)
-         bot.send_video(chat.id, Light_Pic)
+        bot.send_video(chat.id, Light_Pic)
         bot.sendMessage(
             chat.id,
             f"Writed {mention_html(member.user.id, html.escape(member.user.first_name))}'s Name On Death Note! "
