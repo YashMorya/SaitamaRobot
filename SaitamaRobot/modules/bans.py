@@ -49,7 +49,8 @@ def ban(update: Update, context: CallbackContext) -> str:
             raise
 
     if user_id == bot.id:
-        message.reply_text("Oh yeah, ban myself, noob!")
+        message.reply_video(Light_pic2)
+        message.reply_text("Don't Take Me As Noob Like You I Am The Only One Who Kill L")
         return log_message
 
     if is_user_ban_protected(chat, user_id, member) and user not in DEV_USERS:
@@ -67,12 +68,12 @@ def ban(update: Update, context: CallbackContext) -> str:
             return log_message
         elif user_id in DEMONS:
             message.reply_text(
-                "Bring an order from Heroes association to fight a Demon disaster."
+                "Bring an order from Death Note Saviours to fight a Demon disaster."
             )
             return log_message
         elif user_id in TIGERS:
             message.reply_text(
-                "Bring an order from Heroes association to fight a Tiger disaster."
+                "Bring an order from Death Note Saviours to fight a Tiger disaster."
             )
             return log_message
         elif user_id in WOLVES:
@@ -93,14 +94,13 @@ def ban(update: Update, context: CallbackContext) -> str:
 
     try:
         chat.kick_member(user_id)
-        # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
+         bot.send_video(chat.id, Light_Pic)
         reply = (
-            f"{Light_Pic}"
             f"<code>❕</code><b>Ban Event</b>\n"
             f"<code> </code><b>•  User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
         )
         if reason:
-            reply += f"{Light_Pic}\n<code> </code><b>•  Reason:</b> \n{html.escape(reason)}"
+            reply += f"\n<code> </code><b>•  Reason:</b> \n{html.escape(reason)}"
         bot.sendMessage(chat.id, reply, parse_mode=ParseMode.HTML, quote=False)
         return log
 
@@ -183,7 +183,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
 
     try:
         chat.kick_member(user_id, until_date=bantime)
-        # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
+         bot.send_video(chat.id, Light_Pic)
         bot.sendMessage(
             chat.id,
             f"Writed {mention_html(member.user.id, html.escape(member.user.first_name))}'s Name On Death Note! "
@@ -244,7 +244,7 @@ def kill(update: Update, context: CallbackContext) -> str:
 
     res = chat.unban_member(user_id)  # unban on current user = kick
     if res:
-        # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
+        bot.send_video(chat.id, Light_Pic)  
         bot.sendMessage(
             chat.id,
             f"Writed {mention_html(member.user.id, html.escape(member.user.first_name))}'s Name On My Death Note!",
@@ -324,7 +324,7 @@ def unban(update: Update, context: CallbackContext) -> str:
         return log_message
 
     chat.unban_member(user_id)
-    message.reply_text("Yep, this user can join!")
+    message.reply_text("Yep, This User Is Now Safe Because Of Karma")
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
